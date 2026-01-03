@@ -11,13 +11,16 @@ const PORT = process.env.PORT || 5000;
 
 app.use(
   cors({
-    origin: [
-    "https://contact-form-u2xv.onrender.com/"
-    ],
+    origin: "https://contact-form-u2xv.onrender.com",
     credentials: true
   })
 );
+
 app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.send("Backend is running successfully 🚀");
+});
 
 app.use('/api/contacts', contactRoutes);
 
@@ -26,5 +29,3 @@ connectDB().then(() => {
     console.log(`Server running on port ${PORT}`);
   });
 });
-
-
